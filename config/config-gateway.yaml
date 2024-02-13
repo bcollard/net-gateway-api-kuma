@@ -42,12 +42,12 @@ data:
     #     service: the namespace/name of Service for the Gateway
     #
     # The gateway configuration for the default visibility.
-    visibility: |
-      ExternalIP:
-        class: istio
-        gateway: istio-system/knative-gateway
-        service: istio-system/istio-ingressgateway
-      ClusterLocal:
-        class: istio
-        gateway: istio-system/knative-local-gateway
-        service: istio-system/knative-local-gateway
+  visibility: |
+    ExternalIP:
+      class: kuma
+      gateway: demo/kuma
+      service: demo/kuma
+    ClusterLocal:
+      class: kuma
+      gateway: demo/kuma
+      service: demo/kuma
