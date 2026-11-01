@@ -26,11 +26,11 @@ jobs:
     steps:
 
     - name: Set up Go 1.21.x
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
       with:
-        go-version: 1.21.x
+        go-version: 1.27.x
 
-    - uses: ko-build/setup-ko@v0.6
+    - uses: ko-build/setup-ko@61b4d1d396f5b2e7d6bb6fefdce3dc38d1a13445 # v0.10
 
     - name: Setup KinD
       uses: chainguard-dev/actions/setup-kind@main
@@ -38,7 +38,7 @@ jobs:
         k8s-version: ${{ matrix.k8s-version }}
         kind-worker-count: 3
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
     - name: test
       run: |
         ./test/e2e-tests.sh \
@@ -55,7 +55,7 @@ jobs:
         artifact-name: logs-${{ matrix.k8s-version}}-${{ matrix.ingress }}
 
     - name: Post failure notice to Slack
-      uses: rtCamp/action-slack-notify@v2.2.1
+      uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
       if: ${{ failure() && github.event_name != 'pull_request' }}
       env:
         SLACK_ICON: http://github.com/knative.png?size=48
